@@ -1,0 +1,29 @@
+/* ================================
+   TEMA ADULTOS (por defecto)
+================================ */
+.theme-adult {
+  --theme-primary:      #1A4D8F;
+  --theme-primary-mid:  #2C6BC4;
+  --theme-primary-light:#E8F4FD;
+  --theme-accent:       #25D366;
+  --theme-bg:           #F5F7FA;
+  --theme-bg-section:   #EEF3FA;
+  --theme-text:         #1A1A2E;
+  --theme-hero-bg:      #1A4D8F;
+  --theme-card-border:  #DDEAF8;
+}
+
+/* ================================
+   TEMA INFANTIL
+================================ */
+.theme-kids {
+  --theme-primary:      #5BB8E8;
+  --theme-primary-mid:  #7EC8E3;
+  --theme-primary-light:#E8F9FB;
+  --theme-accent:       #FFE066;
+  --theme-bg:           #F0FAFF;
+  --theme-bg-section:   #FFF8E7;
+  --theme-text:         #1A3A5C;
+  --theme-hero-bg:      #5BB8E8;
+  --theme-card-border:  #B8E6F8;
+}
