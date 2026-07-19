@@ -18,35 +18,62 @@
     <!-- QUIÉNES SOMOS -->
     <section class="quienes">
       <div class="container quienes__inner">
+
         <div class="quienes__img">
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffedfd5b0f4?w=700&q=80" alt="Clínica San Martín" />
+          <!-- POLAROID COMPLETA CON IMAGEN Y UBICACIÓN -->
+          <div class="photobooth">
+            <div class="photobooth__frame photobooth__frame--main">
+              <img src="@/assets/images/clinica.png" alt="Clínica San Martín" />
+            </div>
+
+            <!-- UBICACIÓN DENTRO DEL MARCO POLAROID -->
+            <a href="https://maps.google.com/?q=JR.+28+DE+JULIO+844,+Hu%C3%A1nuco,+Per%C3%BA" target="_blank"
+              rel="noopener noreferrer" class="location-card">
+              <div class="location-card__body">
+                <h4> <i class="bi bi-geo-alt-fill"></i> Nuestra ubicación
+                </h4>
+                <p>
+                  Jr. 28 de Julio N.° 844. Pje. Perricholi 129<br />
+                  <small>Frente a la RENIEC</small>
+                </p>
+              </div>
+            </a>
+          </div>
         </div>
+
         <div class="quienes__content">
           <span class="quienes__tag">
-            <img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon">
+            <img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon" />
             San Martín de Porres
           </span>
+
           <h2>¿Quiénes somos?</h2>
-          <p>En Clínica San Martín creemos que una buena atención comienza escuchándote. Por eso, nos tomamos el tiempo
-            para conocer tus necesidades, resolver tus dudas y ayudarte a recuperar la confianza en tu sonrisa.</p>
-          <p>Nos gusta explicarte cada paso con claridad, ofrecerte las mejores alternativas para tu caso y acompañarte
-            durante todo tu tratamiento para que te sientas seguro y confiado en cada decisión. Porque tu sonrisa merece
-            una atención que te haga sentir cómodo y seguro.</p>
-          <div class="quienes__stats">
-            <div class="quienes__stat" v-for="s in stats" :key="s.label">
-              <span>{{ s.value }}</span>
-              <p>{{ s.label }}</p>
-            </div>
-          </div>
+          <p>
+            En Clínica San Martín creemos que una buena atención comienza escuchándote.
+            Por eso, nos tomamos el tiempo para conocer tus necesidades, resolver tus
+            dudas y ayudarte a recuperar la confianza en tu sonrisa.
+          </p>
+
+          <p>
+            Nos gusta explicarte cada paso con claridad, ofrecerte las mejores
+            alternativas para tu caso y acompañarte durante todo tu tratamiento para
+            que te sientas seguro y confiado en cada decisión. Porque tu sonrisa merece
+            una atención que te haga sentir cómodo y seguro.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- FRASE DESTACADA -->
+    <!-- FRASE -->
     <section class="frase">
       <div class="container frase__inner">
-        <p class="frase__sub">Cada sonrisa cuenta una historia, y nos alegra ser parte de ella. </p>
+        <p class="frase__sub">Cada sonrisa cuenta una historia, y nos alegra ser parte de ella.</p>
         <h2 class="frase__title">Gracias por permitirnos ser parte de la tuya.</h2>
+      </div>
+
+      <!-- UNA SOLA IMAGEN CENTRADA QUE UNE AMBAS SECCIONES -->
+      <div class="frase__connector">
+        <img src="@/assets/images/dental-care.png" alt="" />
       </div>
     </section>
 
@@ -54,18 +81,18 @@
     <section class="mv">
       <div class="container">
         <div class="mv__header">
-          <span class="mv__tag"><img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon">Cuidamos tu sonrisa</span>
+          <span class="mv__tag"><img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon">Cuidamos tu
+            sonrisa</span>
           <h2>Nuestra Cultura Organizacional</h2>
-          <p>Con empatía, precisión y dedicación</p>
         </div>
         <div class="mv__grid">
           <div class="mv__card mv__card--mision">
-            <h3>Nuestra misión</h3>
+            <h3><i class="bi bi-bullseye"></i> Nuestra misión</h3>
             <p>Brindar atención odontológica integral y personalizada, mejorando la salud bucal y calidad de vida de
               nuestros pacientes con tecnología moderna y calidez humana en cada visita.</p>
           </div>
           <div class="mv__card mv__card--vision">
-            <h3>Nuestra visión</h3>
+            <h3><i class="bi bi-eye"></i> Nuestra visión</h3>
             <p>Ser la clínica odontológica líder en Huánuco, reconocida por la excelencia en atención, innovación
               tecnológica y el impacto positivo en la salud de la comunidad huanuqueña.</p>
           </div>
@@ -77,9 +104,8 @@
     <section class="valores">
       <div class="container">
         <div class="valores__header">
-          <span class="valores__tag"><i class="bi bi-tooth"></i> Nuestros</span>
-          <h2>Valores</h2>
-          <p>Los principios que guían cada sonrisa</p>
+          <span class="valores__tag"><i class="bi bi-tooth"><img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon" /></i> Los principios que guían cada sonrisa</span>
+          <h2>Nuestros Valores</h2>
         </div>
         <div class="valores__grid">
           <div class="valor__item" v-for="v in valores" :key="v.titulo">
@@ -87,7 +113,7 @@
               <i :class="v.icono"></i>
             </div>
             <div class="valor__text">
-              <h4>{{ v.titulo }}</h4>
+              <h4><span class="valor__dot">●</span> {{ v.titulo }}</h4>
               <p>{{ v.desc }}</p>
             </div>
           </div>
@@ -114,46 +140,17 @@
         </div>
       </div>
     </section>
-
-    <!-- POR QUÉ ELEGIRNOS -->
-    <section class="elegirnos">
-      <div class="container elegirnos__inner">
-        <div class="elegirnos__content">
-          <span class="elegirnos__tag"><i class="bi bi-tooth"></i> ¿Por qué elegirnos?</span>
-          <h2>Lo que nos hace únicos</h2>
-          <p>En Clínica San Martín, ofrecemos un servicio único gracias a nuestros equipos de última generación, que nos
-            permiten realizar diagnósticos precisos y tratamientos personalizados, minimizando molestias y maximizando
-            la eficacia.</p>
-          <ul class="elegirnos__list">
-            <li v-for="r in razones" :key="r"><i class="bi bi-check-circle-fill"></i> {{ r }}</li>
-          </ul>
-          <a :href="whatsappUrl" target="_blank" class="elegirnos__btn">
-            <i class="bi bi-whatsapp"></i> Agenda tu cita
-          </a>
-        </div>
-        <div class="elegirnos__img">
-          <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=700&q=80" alt="Equipo San Martín" />
-        </div>
-      </div>
-    </section>
-
   </main>
 </template>
 
 <script setup>
 const whatsappUrl = 'https://wa.me/51934423066'
 
-const stats = [
-  { value: '+500', label: 'Pacientes atendidos' },
-  { value: '+10', label: 'Años de experiencia' },
-  { value: '95%', label: 'Pacientes satisfechos' },
-]
-
 const valores = [
   { icono: 'bi bi-gem', titulo: 'Excelencia', desc: 'Nos esforzamos por superar las expectativas de nuestros pacientes con resultados de alta calidad en cada tratamiento.' },
   { icono: 'bi bi-lightbulb', titulo: 'Innovación', desc: 'Nos posicionamos como pioneros en el uso de tecnología de vanguardia para ofrecer los mejores resultados.' },
   { icono: 'bi bi-heart', titulo: 'Empatía', desc: 'Entendemos las necesidades de cada paciente, brindando un trato cálido y humano en cada visita.' },
-  { icono: 'bi bi-handshake', titulo: 'Compromiso', desc: 'Dedicados a transformar sonrisas con ética, profesionalismo y precisión en cada procedimiento.' },
+  { icono: 'bi bi-patch-check', titulo: 'Compromiso', desc: 'Dedicados a transformar sonrisas con ética, profesionalismo y precisión en cada procedimiento.' },
   { icono: 'bi bi-person-check', titulo: 'Personalización', desc: 'Adaptamos los tratamientos a las características únicas de cada paciente, respetando su bienestar.' },
   { icono: 'bi bi-trophy', titulo: 'Liderazgo', desc: 'Nos comprometemos a ser referentes en la región, marcando estándares en odontología moderna.' },
 ]
@@ -246,34 +243,112 @@ const razones = [
 }
 
 .quienes__img {
-  position: relative;
-  border-radius: 24px;
-  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.quienes__img img {
+/* POLAROID FRAME */
+.photobooth {
   width: 100%;
-  height: 480px;
-  object-fit: cover;
-  border-radius: 24px;
-  display: block;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  padding: 14px 14px 0 14px;
+  overflow: hidden;
 }
 
-.quienes__img-badge {
+.photobooth__frame {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.photobooth__frame--main {
+  position: relative;
+  border-radius: 6px;
+}
+
+.photobooth__frame--main img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  position: relative;
+}
+
+.photobooth__frame--main::after {
+  content: '';
   position: absolute;
-  bottom: -1rem;
-  right: -1rem;
-  background: #134e86;
-  color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0.05) 30%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.05) 100%);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* LOCATION CARD - INTEGRADA EN LA POLAROID */
+.location-card {
+  background: transparent;
+  border-radius: 0;
+  margin-top: 0;
+  padding: 12px 0 14px 0;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 0.3s ease;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #f0f0f0;
+}
+
+.location-card:hover {
+  transform: none;
+}
+
+.location-card__body {
+  text-align: center;
+}
+
+.location-card__body h4 {
+  color: #134e86;
+  font-size: 16px;
   font-weight: 700;
-  padding: 0.75rem 1.25rem;
-  border-radius: 14px;
+  margin: 0 0 8px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  box-shadow: 0 8px 24px rgba(19, 78, 134, 0.3);
 }
 
+.location-card__body h4 i {
+  color: #80e89b;
+  font-size: 18px;
+}
+
+.location-card__body p {
+  color: #555;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.location-card__body small {
+  color: #888;
+  font-size: 11px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* CONTENT STYLES */
 .quienes__tag {
   display: inline-flex;
   align-items: center;
@@ -284,6 +359,7 @@ const razones = [
   padding: 0.3rem 0.9rem;
   border-radius: 999px;
   margin-bottom: 1rem;
+  font-size: var(--text-badge);
 }
 
 .quienes__content h2 {
@@ -292,12 +368,14 @@ const razones = [
   line-height: 1.15;
   margin-bottom: 1.25rem;
   letter-spacing: -0.5px;
+  font-size: var(--text-section-title);
 }
 
 .quienes__content p {
-  color: #4B5563;
+  color: #4b5563;
   line-height: 1.8;
   margin-bottom: 1rem;
+  font-size: var(--text-body-lg);
 }
 
 .quienes__stats {
@@ -314,41 +392,88 @@ const razones = [
   color: #134e86;
   line-height: 1;
   margin-bottom: 0.25rem;
+  font-size: var(--text-section-title);
 }
 
 .quienes__stat p {
-  color: #6B7280;
+  color: #6b7280;
   margin: 0;
+  font-size: var(--text-small);
 }
 
-/* ===== FRASE ===== */
 .frase {
   background: #8ec5ff;
-  padding: 3.5rem 0;
+  position: relative;
+  overflow: visible;
+  padding: 70px 0 80px;
+}
+
+.frase__inner {
+  position: relative;
+  z-index: 5;
   text-align: center;
 }
 
 .frase__sub {
-  font-weight: 700;
+  font-size: var(--text-body-lg);
   color: #134e86;
-  margin-bottom: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  text-align: center;
 }
 
 .frase__title {
+  font-size: var(--text-section-title);
   font-weight: 900;
   color: #134e86;
   letter-spacing: -0.5px;
+  line-height: 1.2;
+  text-align: center;
 }
 
-/* ===== MISIÓN VISIÓN ===== */
+/* Quita las 3 imágenes anteriores */
+.frase__corner {
+  display: none;
+}
+
+/* IMAGEN CENTRAL CONECTORA */
+.frase__connector {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.frase__connector img {
+  width: 150px;
+  display: block;
+  top: 10px;
+  filter:
+    brightness(1.08) saturate(1.15) contrast(1.03) drop-shadow(0 0 4px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 20px rgba(200, 235, 255, 0.4)) drop-shadow(0 8px 24px rgba(100, 180, 255, 0.3)) drop-shadow(0 16px 40px rgba(0, 0, 0, 0.12));
+}
+
+.frase__connector img:hover {
+  filter:
+    brightness(1.15) saturate(1.25) contrast(1.05) drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 32px rgba(200, 235, 255, 0.6)) drop-shadow(0 10px 28px rgba(100, 180, 255, 0.4)) drop-shadow(0 18px 44px rgba(0, 0, 0, 0.15));
+  transform: scale(1.05);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.frase__connector {
+  transition: transform 0.3s ease;
+}
+
+/*===== MISIÓN VISIÓN ===== */
 .mv {
   background: #fff;
   padding: 6rem 0;
+  padding-top: 5rem;
 }
 
 .mv__header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .mv__tag {
@@ -382,7 +507,7 @@ const razones = [
 
 .mv__card {
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2rem;
   color: #fff;
 }
 
@@ -397,6 +522,13 @@ const razones = [
 .mv__card h3 {
   font-weight: 800;
   margin-bottom: 1rem;
+}
+
+.mv__card h3 i {
+  color: #80e89b;
+  margin-right: 6px;
+  font-size: 1.1em;
+  vertical-align: middle;
 }
 
 .mv__card p {
@@ -441,46 +573,71 @@ const razones = [
 .valores__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 1rem;        /* era 1.5rem */
 }
 
 .valor__item {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 1rem;
   background: #fff;
-  border-radius: 20px;
-  padding: 1.75rem;
+  border-radius: 16px;
+  padding: 1.25rem;
   transition: transform 0.2s, box-shadow 0.2s;
+  /* sin border-left */
+}
+
+.valor__icon {
+  width: 48px;
+  height: 48px;
+  background: #eae6e3;      /* fondo gris original */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: #134e86;           /* icono azul */
 }
 
 .valor__item:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-left-color: #134e86;       /* cambia a azul en hover */
 }
 
 .valor__icon {
-  width: 60px;
-  height: 60px;
-  background: #eae6e3;
-  border-radius: 16px;
+  width: 48px;        /* era 60px */
+  height: 48px;
+  background: #eaf7ef;        /* verde muy suave */
+  border-radius: 12px;        /* era 16px */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 1.5rem;
-  color: #134e86;
+  font-size: 1.25rem;         /* era 1.5rem */
+  color: #134e86;             /* icono verde */
 }
 
 .valor__text h4 {
   font-weight: 800;
   color: #134e86;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.valor__dot {
+  color: #80e89b;
+  font-size: 0.6rem;
+  line-height: 1;
 }
 
 .valor__text p {
   color: #6B7280;
-  line-height: 1.7;
+  line-height: 1.65;
+  font-size: 0.9rem;       /* un poco más pequeño */
 }
 
 /* ===== EQUIPO ===== */
@@ -569,96 +726,6 @@ const razones = [
   border-radius: 999px;
 }
 
-/* ===== POR QUÉ ELEGIRNOS ===== */
-.elegirnos {
-  background: #8ec5ff;
-  padding: 6rem 0;
-}
-
-.elegirnos__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-.elegirnos__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #fff;
-  color: #134e86;
-  font-weight: 700;
-  padding: 0.3rem 0.9rem;
-  border-radius: 999px;
-  margin-bottom: 1rem;
-}
-
-.elegirnos__content h2 {
-  font-weight: 900;
-  color: #134e86;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-  letter-spacing: -0.5px;
-}
-
-.elegirnos__content p {
-  color: #134e86;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  opacity: 0.85;
-}
-
-.elegirnos__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 2rem;
-}
-
-.elegirnos__list li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  color: #134e86;
-}
-
-.elegirnos__list li i {
-  color: #134e86;
-}
-
-.elegirnos__btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #25D366;
-  color: #fff;
-  font-weight: 800;
-  padding: 0.85rem 1.75rem;
-  border-radius: 999px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.elegirnos__btn:hover {
-  background: #1da851;
-  transform: translateY(-2px);
-}
-
-.elegirnos__img {
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12);
-}
-
-.elegirnos__img img {
-  width: 100%;
-  height: 460px;
-  object-fit: cover;
-  display: block;
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .quienes__inner {
@@ -684,8 +751,8 @@ const razones = [
     grid-template-columns: 1fr;
   }
 
-  .quienes__img img {
-    height: 300px;
+  .photobooth__frame--main img {
+    height: 280px;
   }
 
   .mv__grid {
@@ -708,6 +775,17 @@ const razones = [
     display: none;
   }
 
+  .frase__corner {
+    width: 44px;
+    height: 44px;
+    top: -8px;
+  }
+
+  .frase__sticker {
+    width: 36px;
+    height: 36px;
+  }
+
   .frase__title {
     font-size: 1.75rem;
   }
@@ -728,10 +806,6 @@ const razones = [
 
 .quienes__tag {
   font-size: var(--text-badge);
-}
-
-.quienes__img-badge {
-  font-size: var(--text-small);
 }
 
 .quienes__content h2 {
