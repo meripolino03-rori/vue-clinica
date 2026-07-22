@@ -100,46 +100,63 @@
       </div>
     </section>
 
+
+    <!-- EQUIPO / ESPECIALISTAS -->
+    <section class="equipo">
+      <div class="container">
+        <div class="equipo__wrapper">
+
+          <!-- Columna Izquierda: Texto institucional -->
+          <div class="equipo__intro">
+            <span class="equipo__tag"><i class="bi bi-tooth"></i> <img src="@/assets/images/diente-icono.png"
+                alt="Diente" class="custom-icon" />
+              Nuestro equipo</span>
+            <h2>Los especialistas detrás de tu sonrisa</h2>
+            <p class="equipo__desc">
+              Nuestro equipo está conformado por profesionales certificados, con amplia experiencia y vocación de
+              servicio, comprometidos con brindar una atención odontológica de calidad en Huánuco.
+            </p>
+          </div>
+
+          <!-- Columna Derecha: Los dos doctores uno encima del otro -->
+          <div class="equipo__list">
+            <div class="doctor" v-for="d in doctores" :key="d.nombre">
+              <div class="doctor__info-box">
+                <span class="doctor__tag">{{ d.especialidad }}</span>
+                <h3>{{ d.nombre }}</h3>
+                <p class="doctor__cop"><i class="bi bi-award"></i> {{ d.cop }}</p>
+                <p class="doctor__bio">{{ d.descripcion }}</p>
+              </div>
+              <div class="doctor__img">
+                <img :src="d.foto" :alt="d.nombre" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- VALORES -->
     <section class="valores">
       <div class="container">
         <div class="valores__header">
-          <span class="valores__tag"><i class="bi bi-tooth"><img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon" /></i> Los principios que guían cada sonrisa</span>
+          <span class="valores__tag"><i class="bi bi-tooth"><img src="@/assets/images/diente-icono.png" alt="Diente"
+                class="custom-icon" /></i> Los principios que guían cada sonrisa</span>
           <h2>Nuestros Valores</h2>
         </div>
         <div class="valores__grid">
-          <div class="valor__item" v-for="v in valores" :key="v.titulo">
-            <div class="valor__icon">
-              <i :class="v.icono"></i>
+          <div class="valor__item" v-for="(v, index) in valores" :key="v.titulo">
+            <div class="valor__header-row">
+              <span class="valor__number">{{ String(index + 1).padStart(2, '0') }}</span>
+              <h4>{{ v.titulo }}</h4>
             </div>
-            <div class="valor__text">
-              <h4><span class="valor__dot">●</span> {{ v.titulo }}</h4>
-              <p>{{ v.desc }}</p>
-            </div>
+            <p>{{ v.desc }}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- EQUIPO -->
-    <section class="equipo">
-      <div class="container">
-        <div class="equipo__header">
-          <span class="equipo__tag"><i class="bi bi-tooth"></i> Nuestro equipo</span>
-          <h2>Los especialistas detrás de tu sonrisa</h2>
-          <p>Profesionales certificados con años de experiencia y vocación de servicio.</p>
-        </div>
-        <div class="equipo__grid">
-          <div class="doctor" v-for="d in doctores" :key="d.nombre">
-            <div class="doctor__img">
-              <img :src="d.foto" :alt="d.nombre" />
-            </div>
-            <h3>{{ d.nombre }}</h3>
-            <span>{{ d.especialidad }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
 
@@ -147,17 +164,17 @@
 const whatsappUrl = 'https://wa.me/51934423066'
 
 const valores = [
-  { icono: 'bi bi-gem', titulo: 'Excelencia', desc: 'Nos esforzamos por superar las expectativas de nuestros pacientes con resultados de alta calidad en cada tratamiento.' },
-  { icono: 'bi bi-lightbulb', titulo: 'Innovación', desc: 'Nos posicionamos como pioneros en el uso de tecnología de vanguardia para ofrecer los mejores resultados.' },
-  { icono: 'bi bi-heart', titulo: 'Empatía', desc: 'Entendemos las necesidades de cada paciente, brindando un trato cálido y humano en cada visita.' },
-  { icono: 'bi bi-patch-check', titulo: 'Compromiso', desc: 'Dedicados a transformar sonrisas con ética, profesionalismo y precisión en cada procedimiento.' },
-  { icono: 'bi bi-person-check', titulo: 'Personalización', desc: 'Adaptamos los tratamientos a las características únicas de cada paciente, respetando su bienestar.' },
-  { icono: 'bi bi-trophy', titulo: 'Liderazgo', desc: 'Nos comprometemos a ser referentes en la región, marcando estándares en odontología moderna.' },
+  { titulo: 'Excelencia', desc: 'Nos esforzamos por superar las expectativas de nuestros pacientes con resultados de alta calidad en cada tratamiento.' },
+  { titulo: 'Integridad', desc: 'Trabajamos con honestidad, ética y transparencia, ofreciendo diagnósticos claros y tratamientos orientados al bienestar de nuestros pacientes.' },
+  { titulo: 'Empatía', desc: 'Entendemos las necesidades de cada paciente, brindando un trato cálido y humano en cada visita.' },
+  { titulo: 'Compromiso', desc: 'Dedicados a transformar sonrisas con ética, profesionalismo y precisión en cada procedimiento.' },
+  { titulo: 'Personalización', desc: 'Adaptamos los tratamientos a las características únicas de cada paciente, respetando su bienestar.' },
+  { titulo: 'Liderazgo', desc: 'Nos comprometemos a ser referentes en la región, marcando estándares en odontología moderna.' },
 ]
 
 const doctores = [
-  { nombre: 'Dra. María González', especialidad: 'Odontopediatra', foto: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80' },
-  { nombre: 'Dr. Carlos Mendoza', especialidad: 'Ortodoncista', foto: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80' },
+  { nombre: 'Dra. Deysi Guissela Solorzano Vigilio', cop: 'COP 27287', especialidad: 'Odontopediatra', descripcion: 'Cirujana dentista colegiada con amplia experiencia en atención clínica integral y salud bucal para niños y adultos.', foto: new URL('@/assets/images/doctora.jpg', import.meta.url).href },
+  { nombre: 'Dr. Lincol Daniel Poma Merino', cop: 'COP 28361', especialidad: 'Ortodoncista', descripcion: 'Cirujano dentista colegiado, con experiencia en odontología general, cirugía, rehabilitación oral y atención integral de pacientes.', foto: new URL('@/assets/images/doctor.jpg', import.meta.url).href },
 ]
 
 const razones = [
@@ -448,16 +465,17 @@ const razones = [
 .frase__connector img {
   width: 150px;
   display: block;
+  position: relative;
   top: 10px;
+  transition: filter 0.3s ease, transform 0.3s ease;
   filter:
-    brightness(1.08) saturate(1.15) contrast(1.03) drop-shadow(0 0 4px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 20px rgba(200, 235, 255, 0.4)) drop-shadow(0 8px 24px rgba(100, 180, 255, 0.3)) drop-shadow(0 16px 40px rgba(0, 0, 0, 0.12));
+    brightness(1.03) saturate(1.08) contrast(1.01) drop-shadow(0 0 2px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 12px rgba(200, 235, 255, 0.25)) drop-shadow(0 6px 20px rgba(100, 180, 255, 0.2)) drop-shadow(0 12px 30px rgba(0, 0, 0, 0.10));
 }
 
 .frase__connector img:hover {
   filter:
-    brightness(1.15) saturate(1.25) contrast(1.05) drop-shadow(0 0 6px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 32px rgba(200, 235, 255, 0.6)) drop-shadow(0 10px 28px rgba(100, 180, 255, 0.4)) drop-shadow(0 18px 44px rgba(0, 0, 0, 0.15));
+    brightness(1.08) saturate(1.15) contrast(1.03) drop-shadow(0 0 4px rgba(255, 255, 255, 0.7)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5)) drop-shadow(0 0 20px rgba(200, 235, 255, 0.4)) drop-shadow(0 8px 24px rgba(100, 180, 255, 0.3)) drop-shadow(0 16px 40px rgba(0, 0, 0, 0.12));
   transform: scale(1.05);
-  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .frase__connector {
@@ -573,82 +591,84 @@ const razones = [
 .valores__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;        /* era 1.5rem */
+  gap: 1rem 2.5rem;
 }
 
 .valor__item {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.75rem;
   background: #fff;
   border-radius: 16px;
-  padding: 1.25rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-  /* sin border-left */
-}
-
-.valor__icon {
-  width: 48px;
-  height: 48px;
-  background: #eae6e3;      /* fondo gris original */
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 1.25rem;
-  color: #134e86;           /* icono azul */
+  padding: 1.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .valor__item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  border-left-color: #134e86;       /* cambia a azul en hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.09),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.4);
 }
 
-.valor__icon {
-  width: 48px;        /* era 60px */
-  height: 48px;
-  background: #eaf7ef;        /* verde muy suave */
-  border-radius: 12px;        /* era 16px */
+.valor__header-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-size: 1.25rem;         /* era 1.5rem */
-  color: #134e86;             /* icono verde */
+  gap: 0.35rem;
+  flex-wrap: nowrap;
 }
 
-.valor__text h4 {
+.valor__number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #80e89b;
+  line-height: 1;
+  flex-shrink: 0;
+  position: relative;
+  top: 3px;
+  transform: translateY(35px);
+}
+
+.valor__header-row h4 {
+  font-size: 1.2rem;
   font-weight: 800;
   color: #134e86;
-  margin-bottom: 0.3rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  margin: 0;
+  white-space: nowrap;
+    margin-right: 15px;
+
 }
 
-.valor__dot {
-  color: #80e89b;
-  font-size: 0.6rem;
-  line-height: 1;
-}
-
-.valor__text p {
-  color: #6B7280;
+.valor__item p {
+  color:  #134e86;
   line-height: 1.65;
-  font-size: 0.9rem;       /* un poco más pequeño */
+  font-size: 1rem;
+  margin: 0;
+  margin-left: 55px;
 }
-
-/* ===== EQUIPO ===== */
+/* ===== EQUIPO / ESPECIALISTAS ===== */
 .equipo {
   background: #134e86;
   padding: 6rem 0;
 }
 
-.equipo__header {
-  text-align: center;
-  margin-bottom: 3.5rem;
+.equipo__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Columna Izquierda */
+.equipo__intro {
+  text-align: left;
 }
 
 .equipo__tag {
@@ -663,39 +683,100 @@ const razones = [
   margin-bottom: 0.75rem;
 }
 
-.equipo__header h2 {
+.equipo__intro h2 {
+  font-size: 2.5rem;
   font-weight: 900;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
-.equipo__header p {
-  color: rgba(255, 255, 255, 0.65);
+.equipo__desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.equipo__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+/* Columna Derecha: Contenedor vertical de los doctores */
+.equipo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
+/* Tarjeta individual de cada doctor */
 .doctor {
-  text-align: center;
-  transition: transform 0.3s;
+  background: #ffffff;
+  color: #134e86;
+  padding: 1.5rem;
+  border-radius: 20px 60px 20px 20px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .doctor:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
+/* Marco rectangular del texto del doctor */
+.doctor__info-box {
+  flex: 1;
+  text-align: left;
+  padding: 1.2rem;
+  background: #ffffff;
+  color: #134e86;
+}
+
+.doctor__info-box .doctor__tag {
+  display: inline-block;
+  background: #9cecb1;
+  color: #134e86;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
+
+.doctor h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #134e86;
+  line-height: 1.3;
+  margin-bottom: 0.2rem;
+}
+
+.doctor__cop {
+  font-size: 0.8rem;
+  color: #134e86;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.doctor__bio {
+  font-size: 0.82rem;
+  color: #134e86;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Imagen del doctor */
 .doctor__img {
-  height: 320px;
-  border-radius: 20px;
+  width: 130px;
+  height: 150px;
+  border-radius: 14px;
   overflow: hidden;
-  margin-bottom: 1.25rem;
+  flex-shrink: 0;
+  background: #f0f4f8;
 }
 
 .doctor__img img {
@@ -704,26 +785,40 @@ const razones = [
   object-fit: cover;
   object-position: top;
   display: block;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .doctor:hover .doctor__img img {
   transform: scale(1.04);
 }
 
-.doctor h3 {
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 0.3rem;
+/* Responsivo para tablets y celulares */
+@media (max-width: 992px) {
+  .equipo__wrapper {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .equipo__intro {
+    text-align: center;
+  }
 }
 
-.doctor span {
-  display: inline-block;
-  background: #80e89b;
-  color: #134e86;
-  font-weight: 700;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
+@media (max-width: 576px) {
+  .doctor {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .doctor__info-box {
+    text-align: left;
+  }
+
+  .doctor__img {
+    width: 120px;
+    height: 140px;
+    margin: 0 auto;
+  }
 }
 
 /* ===== RESPONSIVE ===== */
