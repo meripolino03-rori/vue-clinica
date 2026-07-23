@@ -3,14 +3,13 @@
 
     <!-- HERO -->
     <section class="hero-ns">
-      <div class="hero-ns__banner">
-        <img src="https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?w=1400&q=80" alt="Clínica San Martín" />
-        <div class="hero-ns__overlay">
-          <div class="hero-ns__content">
-            <span class="hero-ns__badge">Sobre Nosotros</span>
-            <h1>Más de 10 años cuidando sonrisas en Huánuco</h1>
-            <p>Somos una clínica odontológica comprometida con la salud bucal de toda tu familia.</p>
-          </div>
+      <div class="hero-ns__inner">
+        <div class="hero-ns__content">
+          <span class="hero-ns__badge">
+            <i class="bi bi-people-fill"></i> Sobre Nosotros
+          </span>
+          <h1>Más de 10 años cuidando sonrisas en Huánuco</h1>
+          <p>Somos una clínica odontológica comprometida con la salud bucal de toda tu familia.</p>
         </div>
       </div>
     </section>
@@ -189,63 +188,53 @@ const razones = [
 <style scoped>
 /* ===== HERO ===== */
 .hero-ns {
-  margin-top: calc(-1 * var(--navbar-height));
-}
-
-.hero-ns__banner {
-  position: relative;
-  height: 420px;
+  background: linear-gradient(135deg, #0d3560 0%, #134e86 50%, #8ec5ff 100%);
   overflow: hidden;
-}
-
-.hero-ns__banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-
-.hero-ns__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(19, 78, 134, 0.92), rgba(19, 78, 134, 0.5));
+  min-height: 55vh;
   display: flex;
-  align-items: flex-end;
-  padding-bottom: 3rem;
+  align-items: center;
+  margin-top: calc(-1 * var(--navbar-height));
+  padding-top: var(--navbar-height);
+}
+
+.hero-ns__inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;        /* ← mismo que contacto */
 }
 
 .hero-ns__content {
-  padding: 0 4rem;
-  margin-left: max(0px, calc((100vw - 1400px) / 2));
-  max-width: 640px;
+  max-width: 580px;       /* ← mismo que contacto */
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;     
 }
 
 .hero-ns__badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: transparent;
   color: #80e89b;
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  font-size: var(--text-badge);
 }
 
 .hero-ns__content h1 {
   font-weight: 900;
   color: #fff;
   line-height: 1.1;
-  margin-bottom: 0.75rem;
   letter-spacing: -0.5px;
+  font-size: var(--text-hero-title);
 }
 
 .hero-ns__content p {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.8;
+  font-size: var(--text-body-lg);
 }
-
 /* ===== QUIÉNES SOMOS ===== */
 .quienes {
   background: #fff;
@@ -640,17 +629,18 @@ const razones = [
   color: #134e86;
   margin: 0;
   white-space: nowrap;
-    margin-right: 15px;
+  margin-right: 15px;
 
 }
 
 .valor__item p {
-  color:  #134e86;
+  color: #134e86;
   line-height: 1.65;
   font-size: 1rem;
   margin: 0;
   margin-left: 55px;
 }
+
 /* ===== EQUIPO / ESPECIALISTAS ===== */
 .equipo {
   background: #134e86;
