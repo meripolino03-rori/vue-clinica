@@ -1,30 +1,30 @@
 <template>
-    <main class="adultos">
+    <main class="adults-page">
 
         <!-- HERO -->
-        <section class="hero-ad">
-            <div class="hero-ad__inner">
-                <div class="hero-ad__content">
-                    <span class="hero-ad__badge">
-                        <i class="bi bi-award-fill"></i> Atención Adultos s
+        <section class="adults-hero">
+            <div class="adults-hero__inner">
+                <div class="adults-hero__content">
+                    <span class="adults-hero__badge">
+                        <i class="bi bi-award-fill"></i> Atención Adultos
                     </span>
                     <h1>Recupera tu sonrisa con <em>confianza</em></h1>
                     <p>Diagnóstico preciso y tratamientos personalizados para cuidar tu salud bucal en cada etapa
                         de tu vida.</p>
-                    <a :href="whatsappUrl" target="_blank" class="hero__btn--primary">
+                    <a :href="whatsappUrl" target="_blank" class="adults-hero__btn-primary">
                         <i class="bi bi-whatsapp"></i> Agendar cita
                     </a>
                 </div>
-                <img src="@/assets/images/portada-adulto.png" alt="Paciente sonriendo" class="hero-icon" />
+                <img :src="portadaAdulto" alt="Paciente sonriendo" class="adults-hero__image" />
             </div>
         </section>
 
         <!-- 1. ENFERMEDADES -->
-        <section class="enfermedades">
-            <div class="container">
-                <div class="enf__head">
-                    <span class="quienes__tag">
-                        <img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon" />
+        <section class="adults-diseases">
+            <div class="adults-container">
+                <div class="adults-diseases__head">
+                    <span class="adults-tag">
+                        <img src="@/assets/images/diente-icono.png" alt="Diente" class="adults-tag__icon" />
                         Salud Bucal Adulta
                     </span>
                     <h2>Enfermedades y problemas comunes</h2>
@@ -32,14 +32,14 @@
                         tiempo. Haz clic en cada uno para obtener más información.</p>
                 </div>
 
-                <div class="enf__accordion">
-                    <div class="enf__item" v-for="(e, i) in enfermedades" :key="e.titulo"
-                        :class="{ 'enf__item--open': enfActivo === i }">
-                        <div class="enf__item-media" :style="{ backgroundImage: `url(${e.imagen})` }">
-                            <div class="enf__item-overlay">
-                                <p class="enf__item-desc">{{ e.desc }}</p>
+                <div class="adults-diseases__accordion">
+                    <div class="adults-diseases__item" v-for="(e, i) in enfermedades" :key="e.titulo"
+                        :class="{ 'adults-diseases__item--open': enfActivo === i }">
+                        <div class="adults-diseases__item-media" :style="{ backgroundImage: `url(${e.imagen})` }">
+                            <div class="adults-diseases__item-overlay">
+                                <p class="adults-diseases__item-desc">{{ e.desc }}</p>
                                 <h4>{{ e.titulo }}</h4>
-                                <button class="enf__item-btn" @click="toggleEnf(i)">
+                                <button class="adults-diseases__item-btn" @click="toggleEnf(i)">
                                     {{ enfActivo === i ? 'Ver menos' : 'Ver más' }}
                                     <i class="bi" :class="enfActivo === i ? 'bi-arrow-up' : 'bi-arrow-right'"></i>
                                 </button>
@@ -51,40 +51,40 @@
         </section>
 
         <!-- 2. TRATAMIENTOS -->
-        <section class="tratamientos">
-            <div class="container">
-                <div class="trat__header">
+        <section class="adults-treatments">
+            <div class="adults-container">
+                <div class="adults-treatments__header">
                     <div>
-                        <span class="quienes__tag quienes__tag--light">
-                            <img src="@/assets/images/diente-icono.png" alt="Diente" class="custom-icon" />
+                        <span class="adults-tag adults-tag--light">
+                            <img src="@/assets/images/diente-icono.png" alt="Diente" class="adults-tag__icon" />
                             Soluciones
                         </span>
                         <h2>Tratamientos para adultos</h2>
                         <p>Procedimientos modernos, seguros y con resultados duraderos.</p>
                     </div>
-                    <div class="trat__arrows">
-                        <button class="trat__arrow" @click="scrollTrat(-1)">‹</button>
-                        <button class="trat__arrow" @click="scrollTrat(1)">›</button>
+                    <div class="adults-treatments__arrows">
+                        <button class="adults-treatments__arrow" @click="scrollTrat(-1)">‹</button>
+                        <button class="adults-treatments__arrow" @click="scrollTrat(1)">›</button>
                     </div>
                 </div>
 
-                <div class="trat__track" ref="tratTrack">
-                    <div class="trat__card" v-for="(t, i) in tratamientos" :key="t.titulo"
-                        :class="{ 'trat__card--open': tratActivo === i }">
-                        <div class="trat__body">
-                            <span class="trat__badge" @click="toggleTrat(i)">
+                <div class="adults-treatments__track" ref="tratTrack">
+                    <div class="adults-treatments__card" v-for="(t, i) in tratamientos" :key="t.titulo"
+                        :class="{ 'adults-treatments__card--open': tratActivo === i }">
+                        <div class="adults-treatments__body">
+                            <span class="adults-treatments__badge" @click="toggleTrat(i)">
                                 {{ t.categoria || 'Tratamiento' }}
                             </span>
                             <h3>{{ t.titulo }}</h3>
-                            <p class="trat__desc">{{ t.desc }}</p>
+                            <p class="adults-treatments__desc">{{ t.desc }}</p>
                         </div>
 
-                        <transition name="img-cover">
-                            <div class="trat__img-wrap" v-if="tratActivo === i" @click="toggleTrat(i)">
+                        <transition name="adults-cover">
+                            <div class="adults-treatments__img-wrap" v-if="tratActivo === i" @click="toggleTrat(i)">
                                 <img :src="t.imagen" :alt="t.titulo" loading="lazy" />
-                                <div class="trat__img-overlay">
-                                    <span class="trat__img-titulo">{{ t.titulo }}</span>
-                                    <span class="trat__img-close">✕ Cerrar</span>
+                                <div class="adults-treatments__img-overlay">
+                                    <span class="adults-treatments__img-titulo">{{ t.titulo }}</span>
+                                    <span class="adults-treatments__img-close">✕ Cerrar</span>
                                 </div>
                             </div>
                         </transition>
@@ -93,15 +93,15 @@
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="cta-ad">
-            <div class="container cta-ad__inner">
-                <div class="cta-ad__icon">
+        <!-- CTA FINAL -->
+        <section class="adults-cta">
+            <div class="adults-container adults-cta__inner">
+                <div class="adults-cta__icon">
                     <i class="bi bi-emoji-smile"></i>
                 </div>
                 <h2>¿Listo para recuperar tu sonrisa?</h2>
                 <p>Agenda tu primera consulta hoy y recibe una evaluación completa con nuestro equipo.</p>
-                <a :href="whatsappUrl" target="_blank" class="cta-ad__btn">
+                <a :href="whatsappUrl" target="_blank" class="adults-cta__btn">
                     <i class="bi bi-whatsapp"></i> Reservar cita ahora
                 </a>
             </div>
@@ -117,6 +117,8 @@ const whatsappUrl = 'https://wa.me/51934423066'
 const tratTrack = ref(null)
 const enfActivo = ref(null)
 const tratActivo = ref(null)
+
+const portadaAdulto = new URL('@/assets/images/portada-adulto.png', import.meta.url).href
 
 function scrollTrat(dir) {
     tratTrack.value?.scrollBy({ left: dir * 300, behavior: 'smooth' })
@@ -222,20 +224,33 @@ const tratamientos = [
 
 <style scoped>
 /* ============================================================
-   HERO
+   LAYOUT GENERAL DE ADULTOS
 ============================================================ */
-.hero-ad {
-    background: linear-gradient(135deg, #134e86 0%, #1c5f9e 60%, #4fa3d1 100%);
-    min-height: 65vh;
-    display: flex;
-    align-items: center;
-    margin-top: calc(-1 * var(--navbar-height));
-    padding-top: var(--navbar-height);
-    overflow: hidden;
-    position: relative;
+.adults-page {
+    width: 100%;
 }
 
-.hero-ad::before {
+.adults-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.adults-hero {
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+    padding-top: 90px;
+    background: linear-gradient(135deg, #134e86 0%, #1c5f9e 60%, #4fa3d1 100%);
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.adults-hero::before {
     content: '';
     position: absolute;
     width: 420px;
@@ -247,7 +262,7 @@ const tratamientos = [
     pointer-events: none;
 }
 
-.hero-ad::after {
+.adults-hero::after {
     content: '';
     position: absolute;
     width: 220px;
@@ -259,11 +274,11 @@ const tratamientos = [
     pointer-events: none;
 }
 
-.hero-ad__inner {
+.adults-hero__inner {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 4rem;
+    padding: 2rem 4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -272,7 +287,7 @@ const tratamientos = [
     z-index: 1;
 }
 
-.hero-ad__content {
+.adults-hero__content {
     max-width: 610px;
     display: flex;
     flex-direction: column;
@@ -281,7 +296,7 @@ const tratamientos = [
     flex-shrink: 0;
 }
 
-.hero-ad__badge {
+.adults-hero__badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -289,29 +304,29 @@ const tratamientos = [
     font-weight: 800;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-size: var(--text-badge);
+    font-size: var(--text-badge, 0.85rem);
 }
 
-.hero-ad__content h1 {
+.adults-hero__content h1 {
     font-weight: 900;
     color: #fff;
     line-height: 1.1;
     letter-spacing: -0.5px;
-    font-size: var(--text-hero-title);
+    font-size: var(--text-hero-title, 2.5rem);
 }
 
-.hero-ad__content h1 em {
+.adults-hero__content h1 em {
     color: #80e89b;
     font-style: italic;
 }
 
-.hero-ad__content p {
+.adults-hero__content p {
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.8;
-    font-size: var(--text-body-lg);
+    font-size: var(--text-body-lg, 1.1rem);
 }
 
-.hero__btn--primary {
+.adults-hero__btn-primary {
     padding: 0.7rem 2rem;
     border-radius: 999px;
     font-weight: 700;
@@ -321,7 +336,7 @@ const tratamientos = [
     gap: 8px;
     transition: all 0.2s;
     width: fit-content;
-    font-size: var(--text-small);
+    font-size: var(--text-small, 0.9rem);
     background: #80e89b;
     color: #134e86;
     border: 1px solid rgba(255, 255, 255, 0.45);
@@ -331,13 +346,13 @@ const tratamientos = [
         0 6px 20px rgba(0, 0, 0, 0.10);
 }
 
-.hero__btn--primary:hover {
+.adults-hero__btn-primary:hover {
     background: #6add89;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(128, 232, 155, 0.4);
 }
 
-.hero-icon {
+.adults-hero__image {
     width: 100%;
     max-width: 460px;
     height: auto;
@@ -346,9 +361,9 @@ const tratamientos = [
 }
 
 /* ============================================================
-   SHARED
+   SHARED TAGS
 ============================================================ */
-.quienes__tag {
+.adults-tag {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -358,15 +373,15 @@ const tratamientos = [
     padding: 0.3rem 0.9rem;
     border-radius: 999px;
     margin-bottom: 1rem;
-    font-size: var(--text-badge);
+    font-size: var(--text-badge, 0.85rem);
 }
 
-.quienes__tag--light {
+.adults-tag--light {
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
 }
 
-.custom-icon {
+.adults-tag__icon {
     width: 18px;
     height: 18px;
     object-fit: contain;
@@ -375,32 +390,32 @@ const tratamientos = [
 /* ============================================================
    1. ENFERMEDADES
 ============================================================ */
-.enfermedades {
+.adults-diseases {
     background: #f0f9ff;
     padding: 5rem 0;
 }
 
-.enf__head {
+.adults-diseases__head {
     text-align: center;
     max-width: 740px;
     margin: 0 auto 3rem;
 }
 
-.enf__head h2 {
+.adults-diseases__head h2 {
     font-weight: 900;
     color: #134e86;
     letter-spacing: -0.5px;
-    font-size: var(--text-section-title);
+    font-size: var(--text-section-title, 2rem);
     margin-bottom: 0.75rem;
 }
 
-.enf__head p {
+.adults-diseases__head p {
     color: #6B7280;
-    font-size: var(--text-body);
+    font-size: var(--text-body, 1rem);
     line-height: 1.75;
 }
 
-.enf__accordion {
+.adults-diseases__accordion {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
@@ -408,7 +423,7 @@ const tratamientos = [
     gap: 1.25rem;
 }
 
-.enf__item {
+.adults-diseases__item {
     border-radius: 22px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(19, 78, 134, 0.1);
@@ -416,12 +431,12 @@ const tratamientos = [
     cursor: pointer;
 }
 
-.enf__item:hover {
+.adults-diseases__item:hover {
     transform: translateY(-4px);
     box-shadow: 0 16px 36px rgba(19, 78, 134, 0.16);
 }
 
-.enf__item-media {
+.adults-diseases__item-media {
     position: relative;
     aspect-ratio: 3/3.6;
     background-size: cover;
@@ -431,7 +446,7 @@ const tratamientos = [
     align-items: flex-end;
 }
 
-.enf__item-overlay {
+.adults-diseases__item-overlay {
     width: 100%;
     padding: 1.1rem;
     display: flex;
@@ -444,7 +459,7 @@ const tratamientos = [
     transition: background 0.3s ease;
 }
 
-.enf__item--open .enf__item-overlay {
+.adults-diseases__item--open .adults-diseases__item-overlay {
     height: 100%;
     background: linear-gradient(180deg,
             rgba(19, 78, 134, 0.55) 0%,
@@ -453,16 +468,16 @@ const tratamientos = [
     justify-content: flex-end;
 }
 
-.enf__item-overlay h4 {
+.adults-diseases__item-overlay h4 {
     color: #fff;
     font-weight: 800;
-    font-size: var(--text-card-title);
+    font-size: var(--text-card-title, 1.2rem);
     line-height: 1.2;
 }
 
-.enf__item-desc {
+.adults-diseases__item-desc {
     color: rgba(255, 255, 255, 0.9);
-    font-size: var(--text-body);
+    font-size: var(--text-body, 1rem);
     line-height: 1.55;
     max-height: 0;
     overflow: hidden;
@@ -470,12 +485,12 @@ const tratamientos = [
     transition: max-height 0.35s ease, opacity 0.3s ease;
 }
 
-.enf__item--open .enf__item-desc {
+.adults-diseases__item--open .adults-diseases__item-desc {
     max-height: 220px;
     opacity: 1;
 }
 
-.enf__item-btn {
+.adults-diseases__item-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -488,50 +503,50 @@ const tratamientos = [
     border-radius: 999px;
     cursor: pointer;
     font-family: inherit;
-    font-size: var(--text-small);
+    font-size: var(--text-small, 0.85rem);
     transition: all 0.2s;
 }
 
-.enf__item-btn:hover {
+.adults-diseases__item-btn:hover {
     background: #6add89;
 }
 
 /* ============================================================
    2. TRATAMIENTOS
 ============================================================ */
-.tratamientos {
+.adults-treatments {
     background: linear-gradient(135deg, #134e86 0%, #1c5f9e 100%);
     padding: 5rem 0;
     overflow: hidden;
 }
 
-.trat__header {
+.adults-treatments__header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 2rem;
 }
 
-.trat__header h2 {
+.adults-treatments__header h2 {
     font-weight: 900;
     color: #fff;
     letter-spacing: -0.5px;
-    font-size: var(--text-section-title);
+    font-size: var(--text-section-title, 2rem);
     margin-bottom: 0.25rem;
 }
 
-.trat__header p {
+.adults-treatments__header p {
     color: rgba(255, 255, 255, 0.75);
-    font-size: var(--text-body);
+    font-size: var(--text-body, 1rem);
 }
 
-.trat__arrows {
+.adults-treatments__arrows {
     display: flex;
     gap: 0.5rem;
     flex-shrink: 0;
 }
 
-.trat__arrow {
+.adults-treatments__arrow {
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -547,13 +562,13 @@ const tratamientos = [
     line-height: 1;
 }
 
-.trat__arrow:hover {
+.adults-treatments__arrow:hover {
     background: #80e89b;
     border-color: #80e89b;
     color: #134e86;
 }
 
-.trat__track {
+.adults-treatments__track {
     display: flex;
     gap: 1.5rem;
     overflow-x: auto;
@@ -563,11 +578,11 @@ const tratamientos = [
     align-items: flex-start;
 }
 
-.trat__track::-webkit-scrollbar {
+.adults-treatments__track::-webkit-scrollbar {
     display: none;
 }
 
-.trat__card {
+.adults-treatments__card {
     flex: 0 0 280px;
     scroll-snap-align: start;
     background: #fff;
@@ -581,25 +596,25 @@ const tratamientos = [
     transition: box-shadow 0.3s ease;
 }
 
-.trat__card--open {
+.adults-treatments__card--open {
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
 }
 
-.trat__img-wrap {
+.adults-treatments__img-wrap {
     position: absolute;
     inset: 0;
     z-index: 10;
     cursor: pointer;
 }
 
-.trat__img-wrap img {
+.adults-treatments__img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.trat__img-overlay {
+.adults-treatments__img-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to top,
@@ -613,20 +628,20 @@ const tratamientos = [
     gap: 0.5rem;
 }
 
-.trat__img-titulo {
+.adults-treatments__img-titulo {
     font-weight: 900;
     color: #fff;
-    font-size: var(--text-card-title);
+    font-size: var(--text-card-title, 1.2rem);
     line-height: 1.2;
 }
 
-.trat__img-close {
+.adults-treatments__img-close {
     display: inline-flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(6px);
     color: #fff;
-    font-size: var(--text-small);
+    font-size: var(--text-small, 0.85rem);
     font-weight: 700;
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
@@ -635,11 +650,11 @@ const tratamientos = [
     transition: background 0.2s;
 }
 
-.trat__img-close:hover {
+.adults-treatments__img-close:hover {
     background: rgba(255, 255, 255, 0.35);
 }
 
-.trat__badge {
+.adults-treatments__badge {
     display: inline-flex;
     width: fit-content;
     background: #d5f2dd;
@@ -647,36 +662,36 @@ const tratamientos = [
     font-weight: 700;
     padding: 0.3rem 0.85rem;
     border-radius: 999px;
-    font-size: var(--text-badge);
+    font-size: var(--text-badge, 0.85rem);
     cursor: pointer;
     transition: all 0.2s;
     user-select: none;
 }
 
-.trat__badge:hover {
+.adults-treatments__badge:hover {
     background: #80e89b;
     color: #134e86;
     transform: scale(1.05);
 }
 
-.img-cover-enter-active,
-.img-cover-leave-active {
+.adults-cover-enter-active,
+.adults-cover-leave-active {
     transition: all 0.35s ease;
 }
 
-.img-cover-enter-from,
-.img-cover-leave-to {
+.adults-cover-enter-from,
+.adults-cover-leave-to {
     opacity: 0;
     transform: scale(0.95);
 }
 
-.img-cover-enter-to,
-.img-cover-leave-from {
+.adults-cover-enter-to,
+.adults-cover-leave-from {
     opacity: 1;
     transform: scale(1);
 }
 
-.trat__body {
+.adults-treatments__body {
     width: 100%;
     padding: 1.5rem;
     display: flex;
@@ -686,16 +701,16 @@ const tratamientos = [
     overflow: hidden;
 }
 
-.trat__body h3 {
+.adults-treatments__body h3 {
     font-weight: 900;
     color: #134e86;
-    font-size: var(--text-card-title);
+    font-size: var(--text-card-title, 1.2rem);
     line-height: 1.25;
 }
 
-.trat__desc {
+.adults-treatments__desc {
     color: #6B7280;
-    font-size: var(--text-body);
+    font-size: var(--text-body, 1rem);
     line-height: 1.65;
     display: -webkit-box;
     overflow: hidden;
@@ -704,12 +719,12 @@ const tratamientos = [
 /* ============================================================
    CTA FINAL
 ============================================================ */
-.cta-ad {
+.adults-cta {
     background: linear-gradient(135deg, #134e86 0%, #4fa3d1 100%);
     padding: 5rem 0;
 }
 
-.cta-ad__inner {
+.adults-cta__inner {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -719,7 +734,7 @@ const tratamientos = [
     margin: 0 auto;
 }
 
-.cta-ad__icon {
+.adults-cta__icon {
     width: 64px;
     height: 64px;
     border-radius: 50%;
@@ -731,20 +746,20 @@ const tratamientos = [
     color: #80e89b;
 }
 
-.cta-ad__inner h2 {
+.adults-cta__inner h2 {
     font-weight: 900;
     color: #fff;
-    font-size: var(--text-section-title);
+    font-size: var(--text-section-title, 2rem);
     letter-spacing: -0.5px;
 }
 
-.cta-ad__inner p {
+.adults-cta__inner p {
     color: rgba(255, 255, 255, 0.85);
-    font-size: var(--text-body-lg);
+    font-size: var(--text-body-lg, 1.1rem);
     line-height: 1.7;
 }
 
-.cta-ad__btn {
+.adults-cta__btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -755,11 +770,11 @@ const tratamientos = [
     border-radius: 999px;
     text-decoration: none;
     transition: all 0.2s;
-    font-size: var(--text-body);
+    font-size: var(--text-body, 1rem);
     margin-top: 0.5rem;
 }
 
-.cta-ad__btn:hover {
+.adults-cta__btn:hover {
     background: #6add89;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(128, 232, 155, 0.4);
@@ -769,56 +784,56 @@ const tratamientos = [
    RESPONSIVE
 ============================================================ */
 @media (max-width: 1024px) {
-    .enf__accordion {
+    .adults-diseases__accordion {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 900px) {
-    .hero-ad__inner {
+    .adults-hero__inner {
         flex-direction: column;
         text-align: center;
         padding: 0 2rem;
         gap: 2rem;
     }
 
-    .hero-ad__content {
+    .adults-hero__content {
         max-width: 100%;
         align-items: center;
         padding: 3rem 0 1rem;
     }
 
-    .hero__btn--primary {
+    .adults-hero__btn-primary {
         margin: 0 auto;
     }
 
-    .hero-icon {
+    .adults-hero__image {
         max-width: 320px;
     }
 }
 
 @media (max-width: 768px) {
-    .trat__header {
+    .adults-treatments__header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
     }
 
-    .trat__card {
+    .adults-treatments__card {
         flex: 0 0 260px;
     }
 }
 
 @media (max-width: 640px) {
-    .enf__accordion {
+    .adults-diseases__accordion {
         grid-template-columns: 1fr;
     }
 
-    .enf__item-media {
+    .adults-diseases__item-media {
         aspect-ratio: 16/10;
     }
 
-    .trat__body {
+    .adults-treatments__body {
         padding: 1.25rem;
     }
 }

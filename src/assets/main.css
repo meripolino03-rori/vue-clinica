@@ -9,6 +9,11 @@
   padding: 0;
 }
 
+:root {
+  /* Define el alto de tu navbar. Cambia 70px al tamaño real si es necesario */
+  --navbar-height: 70px; 
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
