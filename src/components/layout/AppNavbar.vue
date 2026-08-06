@@ -7,14 +7,18 @@
       </RouterLink>
 
       <nav class="navbar__links" :class="{ 'navbar__links--open': menuOpen }">
-        <RouterLink to="/" class="navbar__link" @click="menuOpen = false">Inicio</RouterLink>
-        <RouterLink to="/nosotros" class="navbar__link" @click="menuOpen = false">Nosotros</RouterLink>
-        <RouterLink to="/blog" class="navbar__link" @click="menuOpen = false">Blog</RouterLink>
+        <RouterLink to="/" class="navbar__link" @click="closeAll">Inicio</RouterLink>
+        <RouterLink to="/nosotros" class="navbar__link" @click="closeAll">Nosotros</RouterLink>
+        <RouterLink to="/blog" class="navbar__link" @click="closeAll">Blog</RouterLink>
 
         <!-- Dropdown Atención -->
         <div class="navbar__dropdown" @mouseenter="openDropdown" @mouseleave="closeDropdown">
-          <button class="navbar__link navbar__dropdown-trigger"> Atención <i class="bi bi-chevron-down arrow"
-              :class="{ 'arrow--up': dropdownOpen }"></i>
+          <button
+            class="navbar__link navbar__dropdown-trigger"
+            @click="toggleDropdown"
+          >
+            Atención
+            <i class="bi bi-chevron-down arrow" :class="{ 'arrow--up': dropdownOpen }"></i>
           </button>
           <div class="dropdown__menu" :class="{ 'dropdown__menu--open': dropdownOpen }">
             <RouterLink to="/servicios/infantil" class="dropdown__item dropdown__item--kids" @click="closeAll">
@@ -30,12 +34,22 @@
           </div>
         </div>
 
-        <RouterLink to="/contacto" class="navbar__link" @click="menuOpen = false">Contacto</RouterLink>
+        <RouterLink to="/contacto" class="navbar__link" @click="closeAll">Contacto</RouterLink>
       </nav>
 
       <div class="navbar__cta">
-        <a :href="whatsappUrl" target="_blank" class="navbar__wa"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+        <a :href="whatsappUrl" target="_blank" class="navbar__wa">
+          <i class="bi bi-whatsapp"></i> WhatsApp
+        </a>
       </div>
+
+      <!-- ← Burger: estaba en el CSS pero faltaba en el HTML -->
+      <button class="navbar__burger" @click="menuOpen = !menuOpen" aria-label="Menú">
+        <span :class="{ open: menuOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
+        <span :class="{ open: menuOpen }"></span>
+      </button>
+
     </div>
   </header>
 </template>
@@ -44,10 +58,10 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const whatsappUrl = 'https://wa.me/51999999999'
-const isScrolled = ref(false)
-const menuOpen = ref(false)
-const dropdownOpen = ref(false)
+const whatsappUrl   = 'https://wa.me/51999999999'
+const isScrolled    = ref(false)
+const menuOpen      = ref(false)
+const dropdownOpen  = ref(false)
 let closeTimer = null
 
 function openDropdown() {
@@ -61,8 +75,12 @@ function closeDropdown() {
   }, 150)
 }
 
+function toggleDropdown() {
+  dropdownOpen.value = !dropdownOpen.value
+}
+
 function closeAll() {
-  menuOpen.value = false
+  menuOpen.value     = false
   dropdownOpen.value = false
 }
 
@@ -101,7 +119,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 .navbar__logo {
   text-decoration: none;
   flex-shrink: 0;
-  font-size: var(--text-body-lg);
 }
 
 .navbar__logo-name {
@@ -134,28 +151,22 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   transition: color 0.2s;
 }
 
-.navbar__link:hover {
-  color: #fff;
-}
+.navbar__link:hover { color: #fff; }
 
 .navbar__link.router-link-active {
   color: #80e89b;
   font-weight: 700;
 }
 
-/* Dropdown */
-.navbar__dropdown {
-  position: relative;
-}
+/* ── Dropdown ── */
+.navbar__dropdown { position: relative; }
 
 .arrow {
   font-size: 0.75rem;
   transition: transform 0.2s;
 }
 
-.arrow--up {
-  transform: rotate(180deg);
-}
+.arrow--up { transform: rotate(180deg); }
 
 .dropdown__menu {
   position: absolute;
@@ -185,25 +196,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   padding: 0.7rem 1rem;
   border-radius: 8px;
   text-decoration: none;
-  border: none;
   transition: background 0.2s;
 }
 
-.dropdown__item--kids:hover {
-  background: #5BB8E8;
-}
-
-.dropdown__item--kids:hover strong {
-  color: #fff;
-}
-
-.dropdown__item--adult:hover {
-  background: #1A4D8F;
-}
-
-.dropdown__item--adult:hover strong {
-  color: #fff;
-}
+.dropdown__item--kids:hover   { background: #5BB8E8; }
+.dropdown__item--kids:hover strong { color: #fff; }
+.dropdown__item--adult:hover  { background: #1A4D8F; }
+.dropdown__item--adult:hover strong { color: #fff; }
 
 .dropdown__item strong {
   font-size: 0.875rem;
@@ -211,7 +210,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   color: #1A1A2E;
 }
 
-/* CTA WhatsApp */
+/* ── CTA ── */
 .navbar__cta {
   display: flex;
   align-items: center;
@@ -238,7 +237,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   color: #fff;
 }
 
-/* Burger */
+/* ── Burger ── */
 .navbar__burger {
   display: none;
   flex-direction: column;
@@ -247,6 +246,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   border: none;
   cursor: pointer;
   padding: 4px;
+  flex-shrink: 0;
 }
 
 .navbar__burger span {
@@ -258,74 +258,85 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
   transition: all 0.3s ease;
 }
 
-.navbar__burger span.open:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
+/* Animación X */
+.navbar__burger span.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar__burger span.open:nth-child(2) { opacity: 0; }
+.navbar__burger span.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-.navbar__burger span.open:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar__burger span.open:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  .navbar__cta {
-    display: none;
-  }
 
-  .navbar__burger {
-    display: flex;
-  }
+  .navbar__cta    { display: none; }
+  .navbar__burger { display: flex; }  /* ← aparece el burger */
 
   .navbar__links {
-    display: none;
+    display: none;                    /* ← oculto por defecto */
     position: absolute;
     top: var(--navbar-height);
     left: 0;
     right: 0;
     background: #1A4D8F;
     flex-direction: column;
-    padding: 1.5rem;
-    gap: 1.25rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    align-items: flex-start;          /* ← links alineados a la izquierda */
+    padding: 1.25rem 1.5rem;
+    gap: 0.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
 
   .navbar__links--open {
-    display: flex !important;
+    display: flex;                    /* ← se muestra al hacer click */
   }
 
   .navbar__link {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     font-size: var(--text-body);
+  }
+
+  .navbar__link:last-child { border-bottom: none; }
+
+  /* Dropdown en móvil */
+  .navbar__dropdown { width: 100%; }
+
+  .navbar__dropdown-trigger {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .dropdown__menu {
     position: static;
-    transform: none;
-    opacity: 1;
-    pointer-events: all;
-    box-shadow: none;
+    transform: none !important;
     width: 100%;
-    display: none;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.2s ease;
   }
 
   .dropdown__menu--open {
-    display: block;
+    opacity: 1;
+    max-height: 200px;
+    padding: 0.4rem;
+    pointer-events: all;
   }
 
-  .dropdown__item strong {
-    color: #fff;
-  }
+  .dropdown__item strong { color: #fff; }
 
-  .dropdown__item--kids:hover {
-    background: rgba(255, 255, 255, 0.15);
-  }
-
+  .dropdown__item--kids:hover,
   .dropdown__item--adult:hover {
     background: rgba(255, 255, 255, 0.15);
+  }
+
+  .dropdown__item--kids:hover strong,
+  .dropdown__item--adult:hover strong {
+    color: #fff;
   }
 }
 </style>
