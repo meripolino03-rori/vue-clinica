@@ -4,7 +4,7 @@
     <!-- HERO -->
     <section class="hero-blog">
       <div class="hero-blog__inner">
-        <span class="hero-blog__badge">Nuestro Blog</span>
+        <span class="hero-blog__badge"><i class="bi bi-pencil-square"></i> Nuestro Blog</span>
         <h1>Secretos de una sonrisa sana</h1>
         <p>Cosas que tu dentista quiere que sepas... pero que a veces no te dicen.</p>
       </div>
@@ -141,7 +141,7 @@ function resetFiltros() {
 }
 
 .hero-blog__inner {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 2rem;
 }

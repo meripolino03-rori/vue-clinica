@@ -1,6 +1,5 @@
 <template>
   <main>
-
     <!-- HERO -->
     <section class="hero-ns">
       <div class="hero-ns__inner">
@@ -201,14 +200,15 @@ const razones = [
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 4rem;        /* ← mismo que contacto */
+  padding: 0 4rem;
 }
 
 .hero-ns__content {
-  max-width: 580px;       /* ← mismo que contacto */
+  max-width: 580px;
+  margin-left: max(0px, calc((100vw - 1600px) / 2));
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;     
+  gap: 1.1rem;
 }
 
 .hero-ns__badge {
@@ -235,6 +235,7 @@ const razones = [
   line-height: 1.8;
   font-size: var(--text-body-lg);
 }
+
 /* ===== QUIÉNES SOMOS ===== */
 .quienes {
   background: #fff;
